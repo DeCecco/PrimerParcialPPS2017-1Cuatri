@@ -1,9 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>
+      Bienvenido!
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content padding>
   <h2>Bienvenido</h2>
   <p>
@@ -20,4 +23,28 @@
   </div> 
   <button type="submit" (click)="enviar();" class="btn btn-default">Submit</button>
 </form>  
+=======
+<ion-content padding scrollbar-y-auto logIn>
+<!--INDICACIÓN DE CUAL ES EL FORMGROUP DEL COMPONENTE PARA ESTE FORM-->
+  <form [formGroup]="formulario">
+    <ion-list inset>
+      <!--AVISO DE ERROR SI LA VARIABLE errorEnFormulario ESTÁ SETEADA EN TRUE-->
+      <p *ngIf="errorEnFormulario" style="color: #ea6153;">El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.</p>
+      <ion-item>
+        <ion-input type="text" formControlName="nombre" placeholder="Nombre del jugador"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col class="textoCentrado">
+            <button ion-button icon-left (click)="irGame()"><ion-icon name="logo-xbox"></ion-icon>Iniciar trivia</button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </form>
+ 
+  
+  <button ion-button id="botonAbout" icon-left (click)="irAbout()"><ion-icon name="information-circle"></ion-icon>Sobre el autor</button>
+
+>>>>>>> 91626167472dfd1d93677bc13106c93e4d3a81d3
 </ion-content>
