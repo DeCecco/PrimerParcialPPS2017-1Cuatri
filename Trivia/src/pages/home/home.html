@@ -8,7 +8,7 @@
 
 <ion-content padding scrollbar-y-auto logIn>
 <!--INDICACIÓN DE CUAL ES EL FORMGROUP DEL COMPONENTE PARA ESTE FORM-->
-  <form [formGroup]="miForm">
+  <form [formGroup]="formulario">
     <ion-list inset>
       <!--AVISO DE ERROR SI LA VARIABLE errorEnFormulario ESTÁ SETEADA EN TRUE-->
       <p *ngIf="errorEnFormulario" style="color: #ea6153;">El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.</p>
