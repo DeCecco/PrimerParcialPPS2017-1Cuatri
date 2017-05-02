@@ -20,7 +20,7 @@ export class HomePage {
     this.errorFormLogin = false;
     //UTILIZACIÓN DE CONSTRUCTOR DE FORMULARIOS CON VALIDACIONES
     this.formLogin = formBuilder.group({
-      nombre: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+      nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
     //PREPARACIÓN DEL ALMACENAMIENTO
     this.storage.ready().then(() => {
