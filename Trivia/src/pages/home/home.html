@@ -13,12 +13,15 @@
       <!--AVISO DE ERROR SI LA VARIABLE errorEnFormulario ESTÁ SETEADA EN TRUE-->
       <p *ngIf="errorFormLogin" style="color: #ea6153;">El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.</p>
       <ion-item>
-        <ion-input type="text" formControlName="nombre" placeholder="Nombre del jugador"></ion-input>
+    
+        <ion-label floating>Nombre</ion-label>  
+        <ion-input type="text" formControlName="nombre" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-row>
           <ion-col class="center">
-            <button ion-button icon-left (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Iniciar trivia</button>
+            <p><button ion-button icon-left (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Iniciar trivia</button></p>
+            <p><button ion-button id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button></p>
           </ion-col>
         </ion-row>
       </ion-item>
@@ -26,6 +29,6 @@
   </form>
  
   
-  <button ion-button id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button>
+  
 
 </ion-content>

@@ -13,8 +13,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'preguntas.html',
 })
 export class Preguntas {
-
+  
+  pregunta:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.pregunta='Primera Pregunta';
   }
 
   ionViewDidLoad() {

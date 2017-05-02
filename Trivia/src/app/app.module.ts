@@ -4,14 +4,17 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';//STORAGE FOR IONIC
+import { Funciones } from "../providers/funciones";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Preguntas } from '../pages/preguntas/preguntas';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    Preguntas
   ],
   imports: [
     BrowserModule,
@@ -21,11 +24,13 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    Preguntas
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Funciones,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

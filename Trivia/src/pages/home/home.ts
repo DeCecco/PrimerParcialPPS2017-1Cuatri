@@ -5,15 +5,16 @@ import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
 import { About } from '../about/about';
 import { Preguntas } from '../preguntas/preguntas';
-//import { Jugada } from "../../classes/jugada";
+import { Funciones } from "../../providers/funciones";
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html'  
 })
 export class HomePage {
   formLogin: FormGroup;
   errorFormLogin: boolean;
-
+  funciones:Funciones;
+  
   constructor(public navCtrl: NavController, private storage: Storage, public formBuilder: FormBuilder) {
     //this.jugadas = new Array();
     this.errorFormLogin = false;
@@ -31,19 +32,21 @@ export class HomePage {
       });
     });
   }
-
+ 
   iniciar() {
+    console.log(Funciones);
     //SI EL FORM ES VALIDO
     if (this.formLogin.valid) {
+      this.errorFormLogin = false;
       //CREACIÓN DE JUGADA Y AGREGADO DE JUGADA EN ARRAY DE JUGADAS
-      new Jugada(this.formLogin.value.nombre).AgregarJugada(this.jugadas);
+  //new Funciones(this.formLogin.value.nombre).AgregarJugada(this.jugadas);
       //PREPARACIÓN DEL ALMACENAMIENTO
       this.storage.ready().then(() => {
         //GUARDADO DE LAS JUGADAS EN BASE DE DATOS
-        this.storage.set('jugadas', JSON.stringify(this.jugadas)).then(() => {
+      // this.storage.set('Funciones', JSON.stringify(this.Funciones)).then(() => {
           //REDIRECCION A PAGINA DE GAME (SETEO COMO PAGINA INICIAL)
-          this.navCtrl.setRoot(Game, {}, { animate: true, direction: "forward" });
-        });
+          this.navCtrl.push(Preguntas);          
+       // });
       });
     }
     //SETEO DE VARIABLE ERROR SI EL FORM NO ES VALIDO
