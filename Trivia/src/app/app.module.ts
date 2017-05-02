@@ -10,13 +10,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { About } from '../pages/about/about';
 import { Preguntas } from '../pages/preguntas/preguntas';
+import { Resultado } from '../pages/resultado/resultado';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     Preguntas,
-    About
+    About,
+    Resultado
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { Preguntas } from '../pages/preguntas/preguntas';
     MyApp,
     HomePage,
     Preguntas,
-    About
+    About,
+    Resultado
   ],
   providers: [
     StatusBar,
