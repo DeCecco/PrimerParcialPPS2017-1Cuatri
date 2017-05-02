@@ -1,14 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
+    <ion-title class="center">
+      Trivia
     </ion-title>
   </ion-navbar>
 </ion-header>
+ 
+<ion-content padding scrollbar-y-auto logIn>
+<!--INDICACIÓN DE CUAL ES EL FORMGROUP DEL COMPONENTE PARA ESTE FORM-->
+  <form [formGroup]="formLogin">
+    <ion-list inset>
+      <!--AVISO DE ERROR SI LA VARIABLE errorEnFormulario ESTÁ SETEADA EN TRUE-->
+      <p *ngIf="errorFormLogin" style="color: #ea6153;">El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.</p>
+      <ion-item>
+        <ion-input type="text" formControlName="nombre" placeholder="Nombre del jugador"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col class="center">
+            <button ion-button icon-left (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Iniciar trivia</button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </form>
+ 
+  
+  <button ion-button id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
 </ion-content>
