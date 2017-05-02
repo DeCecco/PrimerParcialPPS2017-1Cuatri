@@ -8,13 +8,15 @@ import { Funciones } from "../providers/funciones";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { About } from '../pages/about/about';
 import { Preguntas } from '../pages/preguntas/preguntas';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    Preguntas
+    Preguntas,
+    About
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { Preguntas } from '../pages/preguntas/preguntas';
   entryComponents: [
     MyApp,
     HomePage,
-    Preguntas
+    Preguntas,
+    About
   ],
   providers: [
     StatusBar,

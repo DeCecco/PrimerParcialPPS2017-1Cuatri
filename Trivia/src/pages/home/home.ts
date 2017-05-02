@@ -55,7 +55,7 @@ export class HomePage {
     }
   }
 
-  irAbout() {
+  about() {
     this.navCtrl.push(About);
   }
 
