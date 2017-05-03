@@ -18,6 +18,8 @@ export class Preguntas {
   
   pregunta:string;
   respuestas:{};  
+  armado:string[];  
+  FF:{};  
   rFinal:string[];
   imagen:string;
   bandera:boolean;
@@ -28,17 +30,24 @@ export class Preguntas {
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
     this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/delorean.jpg';
     this.rFinal= Array(); 
+    this.FF= Array(); 
+     
     
   }
   
-  seleccion(E){                
-    this.rFinal.push(this.pregunta);    
-    this.rFinal.push(E);   
-    this.cantR++;
+  seleccion(E){
+    this.armado=Array();           
+    this.armado['pregunta']=this.pregunta;
+    this.armado['respuesta']=E;
+    this.armado['imagen']=this.imagen;            
+    
+    
+    this.FF[this.cantR]=this.armado;   
+    this.cantR++;    
     if(this.bandera){
      setTimeout(()=>{
       this.pregunta='¿Cuál de estos actores NO participo en la pelicula TITANIC?';    
-      this.respuestas=[{value:'Steven Seagal',correcto:true},{value:'Steven Seagal',correcto:false},{value:'Kate Winslet',correcto:false}];
+      this.respuestas=[{value:'Steven Seagal',correcto:true},{value:'Leonardo DiCaprio',correcto:false},{value:'Kate Winslet',correcto:false}];
       this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/titanic.jpg';
     }, 200);
     }else
@@ -51,9 +60,10 @@ export class Preguntas {
       }, 200);
     }
     if(this.cantR==3){
+      
       this.storage.ready().then(() => {
        // set a key/value
-        this.storage.set('respuestas', this.rFinal);         
+        this.storage.set('respuestas', this.FF);         
              
         this.navCtrl.push(Resultado);
       });

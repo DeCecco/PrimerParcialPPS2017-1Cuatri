@@ -26,8 +26,7 @@ export class Resultado {
          console.info(this.resultado);
        })
      });
-    console.log('ionViewDidLoad Resultado');
-    console.info(this.resultado);
+    console.log('ionViewDidLoad Resultado');    
   }
 
 }

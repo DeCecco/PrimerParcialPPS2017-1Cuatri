@@ -14,5 +14,14 @@
 
 
 <ion-content padding>
-
+<ion-card>
+  <ion-item *ngFor='let val of resultado let index = index'>
+    <ion-avatar item-left> 
+      <img src={{val.imagen}}>
+    </ion-avatar>
+    <h2>{{val.pregunta}} </h2>
+    <p *ngIf="val.respuesta.correcto" class="resultOk">{{val.respuesta.value}}</p>
+    <p *ngIf="!val.respuesta.correcto" class="resultError">{{val.respuesta.value}}</p>
+  </ion-item>
+</ion-card>
 </ion-content>
