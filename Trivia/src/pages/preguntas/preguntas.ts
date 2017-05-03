@@ -59,8 +59,7 @@ export class Preguntas {
         this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/simpsons.jpg';
       }, 200);
     }
-    if(this.cantR==3){
-      
+    if(this.cantR==3){      
       this.storage.ready().then(() => {
        // set a key/value
         this.storage.set('respuestas', this.FF);         
