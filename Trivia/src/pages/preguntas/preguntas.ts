@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { Resultado } from '../resultado/resultado';
 /**
@@ -16,22 +17,23 @@ import { Resultado } from '../resultado/resultado';
 export class Preguntas {
   
   pregunta:string;
-  respuestas:{};
+  respuestas:{};  
   rFinal:string[];
   imagen:string;
   bandera:boolean;
   cantR:number=0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
     this.pregunta='¿En que año se estrenó volver al futuro?';
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
     this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/delorean.jpg';
-     
+    this.rFinal= Array(); 
+    
   }
   
-  seleccion(E){        
-    this.rFinal.push(this.pregunta);
-    this.rFinal.push(E);
+  seleccion(E){                
+    this.rFinal.push(this.pregunta);    
+    this.rFinal.push(E);   
     this.cantR++;
     if(this.bandera){
      setTimeout(()=>{
@@ -49,7 +51,12 @@ export class Preguntas {
       }, 200);
     }
     if(this.cantR==3){
-      this.navCtrl.push(Resultado);
+      this.storage.ready().then(() => {
+       // set a key/value
+        this.storage.set('respuestas', this.rFinal);         
+             
+        this.navCtrl.push(Resultado);
+      });
     }
   };
   ionViewDidLoad() {

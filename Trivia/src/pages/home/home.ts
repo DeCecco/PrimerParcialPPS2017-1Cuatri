@@ -34,7 +34,7 @@ export class HomePage {
   }
  
   iniciar() {
-    console.log(Funciones);
+    
     //SI EL FORM ES VALIDO
     if (this.formLogin.valid) {
       this.errorFormLogin = false;
