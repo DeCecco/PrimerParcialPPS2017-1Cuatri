@@ -28,7 +28,7 @@ export class Preguntas {
   constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
     this.pregunta='¿En que año se estrenó volver al futuro?';
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
-    this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/delorean.jpg';
+    this.imagen='http://localhost:8080/PrimerParcialPPS2017-1Cuatri/Trivia/delorean.jpg';
     this.rFinal= Array(); 
     this.FF= Array(); 
      
@@ -48,7 +48,7 @@ export class Preguntas {
      setTimeout(()=>{
       this.pregunta='¿Cuál de estos actores NO participo en la pelicula TITANIC?';    
       this.respuestas=[{value:'Steven Seagal',correcto:true},{value:'Leonardo DiCaprio',correcto:false},{value:'Kate Winslet',correcto:false}];
-      this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/titanic.jpg';
+      this.imagen='http://localhost:8080/PrimerParcialPPS2017-1Cuatri/Trivia/titanic.jpg';
     }, 200);
     }else
     {
@@ -56,7 +56,7 @@ export class Preguntas {
       setTimeout(()=>{
         this.pregunta='¿Qué pelicula parodian los simpsons en esta escena?';    
         this.respuestas=[{value:'El eterno resplandor de una mente sin recuerdos',correcto:false},{value:'El resplandor',correcto:true},{value:'Resplandeciente',correcto:false}];
-        this.imagen='http://localhost/UTN/PrimerParcialPPS2017-1Cuatri/Trivia/simpsons.jpg';
+        this.imagen='http://localhost:8080/PrimerParcialPPS2017-1Cuatri/Trivia/simpsons.jpg';
       }, 200);
     }
     if(this.cantR==3){      
