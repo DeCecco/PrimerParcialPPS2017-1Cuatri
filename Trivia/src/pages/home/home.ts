@@ -20,13 +20,13 @@ export class HomePage {
     this.formLogin = formBuilder.group({
       nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
-    this.storage.ready().then(() => {
+    /*this.storage.ready().then(() => {
       this.storage.get('jugadas').then((val) => {
         if (val === null) {
           return;
         }
       });
-    });
+    });*/
   }
  
   iniciar() {    
