@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import * as $ from 'jquery';
 /**
  * Generated class for the Juego page.
  *
@@ -33,14 +34,23 @@ export class Juego {
     console.log('ionViewDidLoad Juego');
 
   }
-
-  select(opcion) {
-    for (var i = 0; i < 100; i++) {
+  random(){
+    for (var i = 0; i < 5; i++) {  
+     
       this.PPT = 0;
-      this.PPT = Math.floor(Math.random() * 3);
-      this.ran = this.fotito[this.PPT];
-      //console.info(this.ran);
-    }
+      this.PPT = Math.floor(Math.random() * 3);              
+      this.ran = this.fotito[this.PPT];                    
+      console.info(this.ran)
+      setTimeout(function() {
+      console.info('as') 
+      }, 1000);              
+    }   
+    
+  }
+  select(opcion) {
+    this.random();
+    $(".content").fadeOut(1500);
+    $(".content").fadeIn(1500);
     this.storage.ready().then(() => {
       // set a key/value      
       switch (opcion) {

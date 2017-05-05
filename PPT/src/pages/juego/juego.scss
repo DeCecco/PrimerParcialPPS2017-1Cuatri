@@ -4,3 +4,26 @@ page-juego {
 .tamanio_btn{
     width:60%;
 }
+.itemRand {   
+    height:200px;
+    width:200px;
+    background:red;
+    -webkit-transition: opacity 1s ease-in-out;
+       -moz-transition: opacity 1s ease-in-out;
+        -ms-transition: opacity 1s ease-in-out;
+         -o-transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out;
+}
+
+.itemRand:hover {
+    zoom: 1;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+
+}
+.none{
+    display:none;
+}
+.block{
+    display:block;
+}
