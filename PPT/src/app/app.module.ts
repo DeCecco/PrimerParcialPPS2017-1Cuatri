@@ -7,11 +7,13 @@ import { IonicStorageModule } from '@ionic/storage';//STORAGE FOR IONIC
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Juego } from '../pages/juego/juego';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    Juego
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    Juego
   ],
   providers: [
     StatusBar,
