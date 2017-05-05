@@ -46,14 +46,16 @@ export class Juego {
   win() {
     let toast = this.toastCtrl.create({
       message: 'GANASTE',
-      duration: 1000
+      duration: 1000,
+      position:'middle'
     });
     toast.present();
   }
   loser() {
     let toast = this.toastCtrl.create({
       message: 'PERDISTE',
-      duration: 1000
+      duration: 1000,
+      position:'middle'
     });
     toast.present();
   }
