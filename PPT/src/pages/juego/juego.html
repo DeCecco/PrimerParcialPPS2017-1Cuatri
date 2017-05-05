@@ -1,0 +1,25 @@
+<!--
+  Generated template for the Juego page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>juego</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<img src="{{ran}}"/>
+  <table>
+      <tr>
+        <td align="center" valign="middle"  *ngFor='let val of fotito let index = index'>          
+          <div (click)="select(index);" class="tamanio_btn"><img src="{{val}}"/></div>
+       </td>       
+      </tr>
+  </table>
+</ion-content>
