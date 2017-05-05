@@ -13,9 +13,17 @@
 </ion-header>
 
 
-<ion-content padding>
-<img src="{{ran}}"/>
+<ion-content padding class="background-black">
+
   <table>
+    <tr>
+      <td>
+      </td>
+      <td><img src="{{ran}}"/>
+      </td>
+      <td>
+      </td>
+    </tr>
       <tr>
         <td align="center" valign="middle"  *ngFor='let val of fotito let index = index'>          
           <div (click)="select(index);" class="tamanio_btn"><img src="{{val}}"/></div>

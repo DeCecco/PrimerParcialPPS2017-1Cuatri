@@ -25,11 +25,17 @@ export class Juego {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Juego');
+    
   }
     
   select(opcion){
-    this.PPT=Math.floor((Math.random() * 3) + 0);    
-    console.info(this.PPT);
+    for ( var i = 0; i < 100; i++ ) {
+       this.PPT = 0;
+       this.PPT = Math.floor(Math.random() * 3);
+       this.ran=this.fotito[this.PPT];      
+       console.info(this.ran);
+    } 
+    //this.PPT=Math.floor((Math.random() * 3) + 0);        
     switch(opcion){
       case 0:
         if(this.PPT==0){
@@ -59,7 +65,7 @@ export class Juego {
         }  
       break;
     }
-    this.ran=this.fotito[this.PPT];
+    
 
   }
 }
