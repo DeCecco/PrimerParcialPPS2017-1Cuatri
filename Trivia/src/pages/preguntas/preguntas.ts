@@ -46,7 +46,7 @@ export class Preguntas {
     this.cantR++;    
     if(this.bandera){
      setTimeout(()=>{
-      this.pregunta='¿Cuál de estos actores NO participo en la pelicula TITANIC?';    
+      this.pregunta='¿Cuál de estos actores NO participo en TITANIC?';    
       this.respuestas=[{value:'Steven Seagal',correcto:true},{value:'Leonardo DiCaprio',correcto:false},{value:'Kate Winslet',correcto:false}];
       this.imagen='assets/img/titanic.jpg';          
     }, 200);
@@ -54,7 +54,7 @@ export class Preguntas {
     {
       this.bandera=true;
       setTimeout(()=>{
-        this.pregunta='¿Qué pelicula parodian los simpsons en esta escena?';    
+        this.pregunta='¿Qué pelicula parodian los simpsons?';    
         this.respuestas=[{value:'El eterno resplandor de una mente sin recuerdos',correcto:false},{value:'El resplandor',correcto:true},{value:'Resplandeciente',correcto:false}];
         this.imagen='assets/img/simpsons.jpg';                  
       }, 200);
