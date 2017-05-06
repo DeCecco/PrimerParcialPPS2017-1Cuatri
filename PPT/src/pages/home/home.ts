@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';//FORMBUILDE
 import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
 import { Juego } from '../juego/juego';
+import { About } from '../about/about';
 
 @Component({
   selector: 'page-home',
@@ -20,11 +21,17 @@ export class HomePage {
   }
   iniciar(){
      if (this.formLogin.valid) {
+        this.storage.ready().then(() => {
+          this.storage.set('nombre', this.formLogin.value.nombre);          
+        });
       this.errorFormLogin = false;          
       this.navCtrl.push(Juego);          
     }    
     else {
       this.errorFormLogin = true;
     }
+  }
+  about(){
+    this.navCtrl.push(About);          
   }
 }

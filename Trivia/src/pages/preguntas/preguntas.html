@@ -16,13 +16,14 @@
 <ion-card>
   <ion-item>
      <ion-card-title class="center">
-        {{pregunta}}
+        <ion-card-header> {{pregunta}}   
+       </ion-card-header>
       </ion-card-title>
-      <ion-img class="center" width="250" height="250" src={{imagen}}></ion-img>
+      
+      <img src="{{imagen}}"/>
     
   </ion-item>
-  <ion-card-header>    
-  </ion-card-header> <!--TODO: corregir RADIO-->
+   <!--TODO: corregir RADIO-->
   <ion-list radio-group *ngFor='let val of respuestas let index = index'>
     
       <ion-item>

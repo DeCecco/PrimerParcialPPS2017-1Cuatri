@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage';
 import * as $ from 'jquery';
 import { ModalController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+
+import { Resultado } from '../resultado/resultado';
 /**
  * Generated class for the Juego page.
  *
@@ -17,16 +19,16 @@ import { ToastController } from 'ionic-angular';
 })
 export class Juego {
   PPT: number;
-  fotito: string[];
+  foto: string[];
   ran: string;
-  resultado: string[];
+  resultado: string[];  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,public modalCtrl: ModalController,public toastCtrl: ToastController) {
-    this.fotito = Array();
+    this.foto = Array();
     this.resultado = Array();
-    this.fotito[0] = 'assets/img/piedra.png';
-    this.fotito[1] = 'assets/img/papel.png';
-    this.fotito[2] = 'assets/img/tijera.png';
+    this.foto[0] = 'assets/img/piedra.png';
+    this.foto[1] = 'assets/img/papel.png';
+    this.foto[2] = 'assets/img/tijera.png';
     this.resultado['EMPATE']=0;
     this.resultado['LOSER']=0;
     this.resultado['WIN']=0;
@@ -34,12 +36,13 @@ export class Juego {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Juego');
-
+    
   }
   empate() {
     let toast = this.toastCtrl.create({
-      message: 'Empate',
-      duration: 1000
+      message: 'EMPATASTE',
+      duration: 1000,
+      position:'middle'
     });
     toast.present();
   }
@@ -64,16 +67,14 @@ export class Juego {
      //setTimeout(function() {
       this.PPT = 0;
       this.PPT = Math.floor(Math.random() * 3);                    
-      this.ran = this.fotito[this.PPT];                    
-      console.info(this.ran)      
-      
+      this.ran = this.foto[this.PPT];                                
       //}, 10);              
     }   
     
   }
   select(opcion) {    
     this.random();
-    //$(".content").fadeOut(1500);
+    
     //$(".content").fadeIn(1500);
     this.storage.ready().then(() => {
       // set a key/value      
@@ -115,19 +116,22 @@ export class Juego {
           }
           break;
       }
-      console.info(this.resultado);
-      this.storage.set('respuestas', this.resultado);          
+      //$(".content").fadeOut(1500);
+      var d = new Date();    
+      var mes= d.getMonth()+1;
+      var dia =d.getDay();
+      var anio= d.getFullYear();
+      this.resultado['fecha']=dia+'/'+mes+'/'+anio;
+      
+      this.storage.get('nombre').then((val) => {        
+        this.resultado['nombre']=val;                            
+        this.storage.set('respuestas', this.resultado);          
+      })            
     });
 
   }
 
   resul(){
-    this.storage.get('respuestas').then((val) => {
-    let toast = this.toastCtrl.create({
-      message: 'QUE TOCA GIL',
-      duration: 3000
-    });
-    toast.present();     
-       })
+    this.navCtrl.push(Resultado);    
   }
 }

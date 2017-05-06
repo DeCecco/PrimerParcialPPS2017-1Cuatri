@@ -8,12 +8,16 @@ import { IonicStorageModule } from '@ionic/storage';//STORAGE FOR IONIC
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Juego } from '../pages/juego/juego';
+import { Resultado } from '../pages/resultado/resultado';
+import { About } from '../pages/about/about';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    Juego
+    Juego,
+    Resultado,
+    About
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,9 @@ import { Juego } from '../pages/juego/juego';
   entryComponents: [
     MyApp,
     HomePage,
-    Juego
+    Juego,
+    Resultado,
+    About
   ],
   providers: [
     StatusBar,

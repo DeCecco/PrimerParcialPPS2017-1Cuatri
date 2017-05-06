@@ -14,6 +14,8 @@ import { Storage } from '@ionic/storage';
 })
 export class Resultado {
   resultado:string;
+  nombre:string;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
   }
 
@@ -21,8 +23,9 @@ export class Resultado {
      this.storage.ready().then(() => {
        // Or to get a key/value pair
        this.storage.get('respuestas').then((val) => {
-         this.resultado=val;         
-       })
+         this.resultado=val;                  
+         console.info(this.resultado)
+       })      
      });
     console.log('ionViewDidLoad Resultado');    
   }
