@@ -51,7 +51,8 @@ export class Preguntas {
       this.nativeAudio.play('win');
       this.vibration.vibrate(1000);
     }else{
-      this.nativeAudio.play('error');
+      this.nativeAudio.play('error');      
+      this.vibration.vibrate(2000);
     }
     this.armado=Array();           
     this.armado['pregunta']=this.pregunta;
