@@ -17,4 +17,15 @@ export class HomePage {
     });
   }
 
+  iniciar(){
+    if(this.formLogin.valid){
+      console.info('INICIAR')
+      this.errorFormLogin = false;
+    }
+    else{
+      console.info('NO')
+      this.errorFormLogin = true;
+    }
+  }
+
 }
