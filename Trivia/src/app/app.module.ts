@@ -7,6 +7,8 @@ import { IonicStorageModule } from '@ionic/storage';//STORAGE FOR IONIC
 import { Funciones } from "../providers/funciones";
 
 import { Vibration } from '@ionic-native/vibration';
+import { NativeAudio } from '@ionic-native/native-audio';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -38,6 +40,7 @@ import { Resultado } from '../pages/resultado/resultado';
   providers: [
     StatusBar,
     Vibration,
+    NativeAudio,
     SplashScreen,
     Funciones,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
