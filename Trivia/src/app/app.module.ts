@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';//STORAGE FOR IONIC
 import { Funciones } from "../providers/funciones";
 
+import { Vibration } from '@ionic-native/vibration';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { About } from '../pages/about/about';
@@ -22,7 +24,7 @@ import { Resultado } from '../pages/resultado/resultado';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp),    
     IonicStorageModule.forRoot()//STORAGE FOR IONIC
   ],
   bootstrap: [IonicApp],
@@ -35,6 +37,7 @@ import { Resultado } from '../pages/resultado/resultado';
   ],
   providers: [
     StatusBar,
+    Vibration,
     SplashScreen,
     Funciones,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

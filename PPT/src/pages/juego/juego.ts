@@ -73,8 +73,7 @@ export class Juego {
     
   }
   select(opcion) {    
-    this.random();
-    
+    this.random();    
     //$(".content").fadeIn(1500);
     this.storage.ready().then(() => {
       // set a key/value      

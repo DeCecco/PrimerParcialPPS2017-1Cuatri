@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
+import { Vibration } from '@ionic-native/vibration';
+/* si da error correr lo siguiente para actualizar el core
+npm uninstall --save @ionic-native/core
+npm install --save @ionic-native/core@latest
+*/
 import { Resultado } from '../resultado/resultado';
 /**
  * Generated class for the Preguntas page.
@@ -25,7 +30,7 @@ export class Preguntas {
   bandera:boolean;
   cantR:number=0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration) {
     this.pregunta='¿En que año se estrenó volver al futuro?';
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
     this.imagen='assets/img/delorean.jpg';    
@@ -36,6 +41,11 @@ export class Preguntas {
   }
   
   seleccion(E){
+    
+    if(E.correcto){
+      console.warn(E.correcto);  
+      this.vibration.vibrate(1000);
+    }
     this.armado=Array();           
     this.armado['pregunta']=this.pregunta;
     this.armado['respuesta']=E;
