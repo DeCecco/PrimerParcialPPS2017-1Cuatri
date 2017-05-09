@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Piano</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background-black">
+
+  <ion-card>
+
+    <img src="assets/img/inicio.png"/>
+
+    <ion-card-content class="background-black">
+      <ion-card-title class="center texto-inicio">
+        Bienvenido
+      </ion-card-title>
+        <form [formGroup]="formLogin">
+    <ion-list inset>
+      <!--AVISO DE ERROR SI LA VARIABLE errorEnFormulario ESTÁ SETEADA EN TRUE-->
+      <p *ngIf="errorFormLogin" style="color: #ea6153;">El nombre es obligatorio y debe contener solo letras hasta un máximo de 30.</p>
+      <ion-item class="background-black  texto-inicio">
+    
+        <ion-label floating>Nombre</ion-label>  
+        <ion-input type="text" formControlName="nombre" ></ion-input>
+      </ion-item>
+      <ion-item class="background-black">
+        <ion-row>
+          <ion-col class="center">
+            <p><button ion-button icon-left color="danger" (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Jugar</button></p>
+            <p><button ion-button id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button></p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

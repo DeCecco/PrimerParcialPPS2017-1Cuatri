@@ -1,0 +1,5 @@
+ionic start myApp blank --v2
+ionic platform add adroid
+ionic resources
+ionic serve 
+ionic g page miPagina
