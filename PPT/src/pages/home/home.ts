@@ -18,7 +18,10 @@ export class HomePage {
     this.formLogin = formBuilder.group({
       nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
+
+
   }
+  
   iniciar(){
      if (this.formLogin.valid) {
         this.storage.ready().then(() => {
