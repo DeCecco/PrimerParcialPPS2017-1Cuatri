@@ -3,3 +3,14 @@ ionic platform add adroid
 ionic resources
 ionic serve 
 ionic g page miPagina
+
+First install the package.
+
+npm install jquery --save
+Install (typings and) the typings file
+
+npm install -g typings
+typings install dt~jquery --global --save
+and finally, import the jquery to your ts file
+
+import * as $ from 'jquery'
