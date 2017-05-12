@@ -10,6 +10,7 @@ import { Funciones } from "../providers/funciones";
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
 
+import { Firebase } from '@ionic-native/firebase';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -21,7 +22,7 @@ import { AngularFireModule } from 'angularfire2';
 export const firebaseConfig={
     apiKey: "AIzaSyDSVUTEWTkXpipeRKdQGDltk-_VIwIJQ2o",
     authDomain: "trivia-b1415.firebaseapp.com",
-    databaseURL: "https://trivia-b1415.firebaseio.com",
+    databaseURL: "https://trivia-b1415.firebaseio.com/pablo",
     projectId: "trivia-b1415",
     storageBucket: "trivia-b1415.appspot.com",
     messagingSenderId: "770136377225"
@@ -55,6 +56,7 @@ export const firebaseConfig={
     NativeAudio,
     SplashScreen,
     Funciones,
+    Firebase,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

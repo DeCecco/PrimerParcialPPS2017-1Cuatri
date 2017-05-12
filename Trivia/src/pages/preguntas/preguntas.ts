@@ -6,6 +6,8 @@ import { Storage } from '@ionic/storage';
 npm uninstall --save @ionic-native/core
 npm install --save @ionic-native/core@latest
 */
+import { Firebase } from '@ionic-native/firebase';
+
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
 
@@ -32,8 +34,8 @@ export class Preguntas {
   imagen:string;
   bandera:boolean;
   cantR:number=0;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration,private nativeAudio: NativeAudio) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration,private nativeAudio: NativeAudio,/*private af: AngularFire,*/private firebase: Firebase) {
     this.pregunta='¿En que año se estrenó volver al futuro?';
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
     this.imagen='assets/img/delorean.jpg';    
@@ -45,7 +47,11 @@ export class Preguntas {
   }
   
   seleccion(E){
-    
+    this.firebase.getToken()
+  .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
+  .catch(error => console.error('Error getting token', error));
+  this.firebase.onTokenRefresh()
+  .subscribe((token: string) => console.log(`Got a new token ${token}`));
     if(E.correcto){
       console.warn(E.correcto);        
       this.nativeAudio.play('win');

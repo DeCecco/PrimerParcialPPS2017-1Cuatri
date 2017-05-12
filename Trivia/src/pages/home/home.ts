@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';//FORMBUILDER CREA FORMS, FORMGROUP DEFINE UN FORMULARIO Y VALIDATORS CONTIENE VALIDACIONES PREDISEÑADAS
 import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
+import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2';
+
 import { About } from '../about/about';
 import { Preguntas } from '../preguntas/preguntas';
 import { Funciones } from "../../providers/funciones";
@@ -14,12 +16,13 @@ export class HomePage {
   formLogin: FormGroup;
   errorFormLogin: boolean;
   funciones:Funciones;
-  
-  constructor(public navCtrl: NavController, private storage: Storage, public formBuilder: FormBuilder) {
+  tasks: FirebaseListObservable<any>;
+  constructor(public navCtrl: NavController, private storage: Storage, public formBuilder: FormBuilder,public database: AngularFireDatabase) {
     this.errorFormLogin = false;
     this.formLogin = formBuilder.group({
       nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
+    this.tasks = this.database.list('/tasks')
     /*this.storage.ready().then(() => {
       this.storage.get('jugadas').then((val) => {
         if (val === null) {
