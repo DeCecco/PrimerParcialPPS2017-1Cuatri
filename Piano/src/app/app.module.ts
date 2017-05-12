@@ -4,13 +4,19 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+
+import { Vibration } from '@ionic-native/vibration';
+import { NativeAudio } from '@ionic-native/native-audio';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Piano } from '../pages/piano/piano';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    Piano
   ],
   imports: [
     BrowserModule,
@@ -19,11 +25,14 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    Piano
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Vibration,
+    NativeAudio,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as $ from 'jquery'
+import { Piano } from '../piano/piano';
 
 @Component({
   selector: 'page-home',
@@ -20,12 +21,11 @@ export class HomePage {
 
   iniciar(){
     
-    if(this.formLogin.valid){
-      console.info('INICIAR')
+    if(this.formLogin.valid){      
       this.errorFormLogin = false;
+      this.navCtrl.push(Piano); 
     }
-    else{
-      console.info('NO')
+    else{      
       this.errorFormLogin = true;
     }
   }

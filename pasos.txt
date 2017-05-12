@@ -1,9 +1,10 @@
 ionic start myApp blank --v2
-ionic platform add adroid
+ionic platform add android
 ionic resources
 ionic serve 
 ionic g page miPagina
-
+ionic build android
+ionic run android
 First install the package.
 
 npm install jquery --save
