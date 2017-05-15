@@ -3,12 +3,13 @@ import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
+
 import { Juego } from '../juego/juego';
 import { About } from '../about/about';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html'  
 })
 export class HomePage {
   formLogin: FormGroup;
@@ -18,8 +19,7 @@ export class HomePage {
     this.formLogin = formBuilder.group({
       nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
-
-
+    
   }
   
   iniciar(){

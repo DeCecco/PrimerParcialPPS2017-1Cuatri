@@ -1,6 +1,5 @@
 {
   "name": "PPT",
   "app_id": "351dd7e9",
-  "v2": true,
-  "typescript": true
+  "type": "ionic-angular"
 }

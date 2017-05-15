@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import * as $ from 'jquery';
 import { ModalController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2/database';
 
 import { Resultado } from '../resultado/resultado';
 /**
@@ -21,9 +22,11 @@ export class Juego {
   PPT: number;
   foto: string[];
   ran: string;
-  resultado: string[];  
+  resultado: string[];    
+  jugadas: FirebaseListObservable<any>;
+  tasks: FirebaseListObservable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,public modalCtrl: ModalController,public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,public modalCtrl: ModalController,public toastCtrl: ToastController, public fireDatabase: AngularFireDatabase) {
     this.foto = Array();
     this.resultado = Array();
     this.foto[0] = 'assets/img/piedra.png';
@@ -32,9 +35,32 @@ export class Juego {
     this.resultado['EMPATE']=0;
     this.resultado['LOSER']=0;
     this.resultado['WIN']=0;
+    this.jugadas = this.fireDatabase.list('/jugadas');
+    this.tasks = this.fireDatabase.list('/tasks');
   }
 
   ionViewDidLoad() {
+    //this.jugadas.    
+    this.tasks.push({
+      title: "Nueva tarea",
+      done: false
+    });
+     this.fireDatabase
+      .list("tasks", {
+        query: {
+          limitToLast: 10
+        }
+      })
+      .subscribe(matches => {
+       console.info(matches);
+      });
+    console.info(this.tasks);
+    /*  this.jugadas.forEach(snapshot => {
+            console.log(snapshot.key, snapshot.val());
+                this.items.push({
+                id: snapshot.key,
+                name: snapshot.val().name
+            });*/
     console.log('ionViewDidLoad Juego');
     
   }
@@ -124,7 +150,10 @@ export class Juego {
       
       this.storage.get('nombre').then((val) => {        
         this.resultado['nombre']=val;                            
-        this.storage.set('respuestas', this.resultado);          
+        this.storage.set('respuestas', this.resultado);  
+        this.jugadas.push({
+          jugada: this.resultado
+        });        
       })            
     });
 
