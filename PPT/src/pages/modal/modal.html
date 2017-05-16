@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>modal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-row>
+    <ion-col><div>Fecha</div></ion-col>
+    <ion-col><div>Nombre</div></ion-col>
+ </ion-row>   
+ 
+  <ion-row *ngFor='let val of resultado let index = index'>
+    <ion-col  *ngIf="chose=='0'"><div>{{val.gano.fecha}}</div></ion-col>
+    <ion-col *ngIf="chose=='0'"><div>{{val.gano.nombre}}</div></ion-col>
+    <ion-col  *ngIf="chose=='1'"><div>{{val.perdio.fecha}}</div></ion-col>
+    <ion-col *ngIf="chose=='1'"><div>{{val.perdio.nombre}}</div></ion-col>
+    <ion-col  *ngIf="chose=='2'"><div>{{val.empato.fecha}}</div></ion-col>
+    <ion-col *ngIf="chose=='2'"><div>{{val.empato.nombre}}</div></ion-col>
+</ion-row>    
+<button align="center" ion-button color="red" (click)="inicio();">Salir</button>
+</ion-content>

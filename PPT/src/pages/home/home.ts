@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
 import { Juego } from '../juego/juego';
 import { About } from '../about/about';
-
+import { Resultado } from '../resultado/resultado';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'  
@@ -33,6 +33,9 @@ export class HomePage {
     else {
       this.errorFormLogin = true;
     }
+  }
+  registros() {
+    this.navCtrl.push(Resultado);
   }
   about(){
     this.navCtrl.push(About);          

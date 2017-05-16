@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { Juego } from '../pages/juego/juego';
 import { Resultado } from '../pages/resultado/resultado';
 import { About } from '../pages/about/about';
+import { ModalPage } from '../pages/modal/modal';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 export const firebaseConfig = {
@@ -37,7 +38,8 @@ const myFirebaseAuthConfig = {
     HomePage,
     Juego,
     Resultado,
-    About
+    About,
+    ModalPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ const myFirebaseAuthConfig = {
     HomePage,
     Juego,
     Resultado,
-    About
+    About,
+    ModalPage
   ],
   providers: [
     StatusBar,

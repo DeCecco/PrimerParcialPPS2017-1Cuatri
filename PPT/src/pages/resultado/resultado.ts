@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { ModalController, Platform, ViewController, IonicPage, NavController, NavParams } from 'ionic-angular';
+
+
+import { ModalPage } from '../modal/modal';
 /**
  * Generated class for the Resultado page.
  *
@@ -12,26 +14,25 @@ import { Storage } from '@ionic/storage';
   selector: 'page-resultado',
   templateUrl: 'resultado.html',
 })
-export class Resultado {
-  resultado: string[];  
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
-    this.resultado= Array();
+export class Resultado {  
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams) {    
   }
 
   ionViewDidLoad() {
-     this.storage.ready().then(() => {
-       // Or to get a key/value pair
-       this.storage.get('respuestas').then((val) => {               
-         this.resultado['nombre']=val['nombre'];         
-         this.resultado['empate']=val['EMPATE'];
-         this.resultado['loser']=val['LOSER'];
-         this.resultado['win']=val['WIN'];
-         this.resultado['fecha']=val['fecha'];                
-       })      
-     });
+      
     console.log('ionViewDidLoad Resultado');    
+  }
+  
+  openModal(characterNum) {
+    let obj ={id:characterNum};
+    let modal = this.modalCtrl.create(ModalPage,obj);
+    modal.present();
+    /*let modal = Modal.create(MyModal);
+
+        this.nav.present(modal);*/
   }
 
 
-
 }
+
+
