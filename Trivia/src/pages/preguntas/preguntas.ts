@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
 /* si da error correr lo siguiente para actualizar el core
 npm uninstall --save @ionic-native/core
 npm install --save @ionic-native/core@latest
 */
-import { Firebase } from '@ionic-native/firebase';
 
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
@@ -34,26 +32,20 @@ export class Preguntas {
   imagen:string;
   bandera:boolean;
   cantR:number=0;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration,private nativeAudio: NativeAudio,/*private af: AngularFire,*/private firebase: Firebase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration,private nativeAudio: NativeAudio) {
     this.pregunta='¿En que año se estrenó volver al futuro?';
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
     this.imagen='assets/img/delorean.jpg';    
     this.rFinal= Array(); 
-    this.FF= Array(); 
+    this.FF= Array();     
+   
     this.nativeAudio.preloadSimple('win', 'assets/sounds/win.mp3'); 
     this.nativeAudio.preloadSimple('error', 'assets/sounds/error.mp3'); 
     
   }
   
-  seleccion(E){
-    this.firebase.getToken()
-  .then(token => console.log(`The token is ${token}`)) // save the token server-side and use it to push notifications to this device
-  .catch(error => console.error('Error getting token', error));
-  this.firebase.onTokenRefresh()
-  .subscribe((token: string) => console.log(`Got a new token ${token}`));
-    if(E.correcto){
-      console.warn(E.correcto);        
+  seleccion(E){     
+    if(E.correcto){     
       this.nativeAudio.play('win');
       this.vibration.vibrate(1000);
     }else{
@@ -88,7 +80,7 @@ export class Preguntas {
        // set a key/value
         this.storage.set('respuestas', this.FF);         
              
-        this.navCtrl.push(Resultado);
+        this.navCtrl.push(Resultado, { inicio:'jugar'});
       });
     }
   };

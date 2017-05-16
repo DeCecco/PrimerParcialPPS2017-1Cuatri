@@ -3,11 +3,11 @@ import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';//FORMBUILDER CREA FORMS, FORMGROUP DEFINE UN FORMULARIO Y VALIDATORS CONTIENE VALIDACIONES PREDISEÑADAS
 import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
-import { FirebaseListObservable, AngularFireDatabase  } from 'angularfire2';
 
 import { About } from '../about/about';
 import { Preguntas } from '../preguntas/preguntas';
 import { Funciones } from "../../providers/funciones";
+import { Resultado } from '../resultado/resultado';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'  
@@ -16,35 +16,29 @@ export class HomePage {
   formLogin: FormGroup;
   errorFormLogin: boolean;
   funciones:Funciones;
-  tasks: FirebaseListObservable<any>;
-  constructor(public navCtrl: NavController, private storage: Storage, public formBuilder: FormBuilder,public database: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, private storage: Storage, public formBuilder: FormBuilder) {
     this.errorFormLogin = false;
     this.formLogin = formBuilder.group({
-      nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
+      nombre: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
     });
-    this.tasks = this.database.list('/tasks')
-    /*this.storage.ready().then(() => {
-      this.storage.get('jugadas').then((val) => {
-        if (val === null) {
-          return;
-        }
-      });
-    });*/
+
   }
  
   iniciar() {    
     if (this.formLogin.valid) {
       this.errorFormLogin = false;
-      this.storage.ready().then(() => {      
-      this.navCtrl.push(Preguntas);          
-       
+      this.storage.ready().then(() => {   
+      this.storage.set('nombre', this.formLogin.value.nombre);
+      this.navCtrl.push(Preguntas);                 
       });
     }    
     else {
       this.errorFormLogin = true;
     }
   }
-
+  historial(){
+    this.navCtrl.push(Resultado, { inicio:'home'})
+  }
   about() {
     this.navCtrl.push(About);
   }

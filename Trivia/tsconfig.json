@@ -8,12 +8,6 @@
       "dom",
       "es2015"
     ],
-		"typeRoots": [
-      "../node_modules/@types"
-    ],
-		"types": [
-      "firebase"
-    ]
     "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,

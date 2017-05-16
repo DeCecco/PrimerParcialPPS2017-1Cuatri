@@ -10,19 +10,20 @@ import { Funciones } from "../providers/funciones";
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
 
-import { Firebase } from '@ionic-native/firebase';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { About } from '../pages/about/about';
 import { Preguntas } from '../pages/preguntas/preguntas';
 import { Resultado } from '../pages/resultado/resultado';
 
+
+//import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 export const firebaseConfig={
     apiKey: "AIzaSyDSVUTEWTkXpipeRKdQGDltk-_VIwIJQ2o",
     authDomain: "trivia-b1415.firebaseapp.com",
-    databaseURL: "https://trivia-b1415.firebaseio.com/pablo",
+    databaseURL: "https://trivia-b1415.firebaseio.com",
     projectId: "trivia-b1415",
     storageBucket: "trivia-b1415.appspot.com",
     messagingSenderId: "770136377225"
@@ -40,7 +41,8 @@ export const firebaseConfig={
     BrowserModule,
     IonicModule.forRoot(MyApp),    
     IonicStorageModule.forRoot(),//STORAGE FOR IONIC
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,9 +57,9 @@ export const firebaseConfig={
     Vibration,
     NativeAudio,
     SplashScreen,
-    Funciones,
-    Firebase,
+    Funciones, 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+    //AuthServiceProvider
   ]
 })
 export class AppModule {}
