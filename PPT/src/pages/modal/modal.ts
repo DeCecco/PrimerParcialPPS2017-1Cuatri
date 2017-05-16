@@ -18,9 +18,11 @@ import { HomePage } from '../home/home';
 export class ModalPage {
   id: string = this.navParams.get('id');
   resultado: string[];
+  estoy: string;
   chose:number;
   constructor(public navCtrl: NavController, public navParams: NavParams, public fireDatabase: AngularFireDatabase) {
     this.resultado = Array();
+   
     this.chose=this.id['select'];
   }
 
@@ -31,6 +33,7 @@ export class ModalPage {
     console.log('ionViewDidLoad ModalPage');    
     switch (this.id['select']) {
       case 0:
+      this.estoy='Listado de Ganadores';
         this.fireDatabase
           .list("gano", {
             query: {
@@ -45,6 +48,7 @@ export class ModalPage {
           });
         break;
       case 1:
+      this.estoy='Listado de Perdedores';
         this.fireDatabase
           .list("perdio", {
             query: {
@@ -59,6 +63,7 @@ export class ModalPage {
           });
         break;
       case 2:
+      this.estoy='Listado de Empates';
         this.fireDatabase
           .list("empate", {
             query: {
