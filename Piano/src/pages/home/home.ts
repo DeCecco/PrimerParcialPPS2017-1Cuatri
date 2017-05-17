@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as $ from 'jquery'
 import { Piano } from '../piano/piano';
 import { AboutPage } from '../about/about';
+import { ResultadosPage } from '../resultados/resultados';
 
 @Component({
   selector: 'page-home',
@@ -13,24 +14,28 @@ import { AboutPage } from '../about/about';
 export class HomePage {
   formLogin: FormGroup;
   errorFormLogin: boolean;
-  constructor(public navCtrl: NavController,public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
     this.errorFormLogin = false;
     this.formLogin = formBuilder.group({
       nombre: ['Pablo', Validators.compose([Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*'), Validators.required])]
-    });     
+    });
   }
-   about() {
+  about() {
     this.navCtrl.push(AboutPage);
   }
-  iniciar(){
-    
-    if(this.formLogin.valid){      
+  iniciar() {
+
+    if (this.formLogin.valid) {
       this.errorFormLogin = false;
-      this.navCtrl.push(Piano,{nombre:this.formLogin.value.nombre}); 
+      this.navCtrl.push(Piano, { nombre: this.formLogin.value.nombre });
     }
-    else{      
+    else {
       this.errorFormLogin = true;
     }
+  }
+
+  registros(){
+    this.navCtrl.push(ResultadosPage);
   }
 
 }

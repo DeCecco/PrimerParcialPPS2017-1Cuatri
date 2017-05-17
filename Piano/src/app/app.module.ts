@@ -14,6 +14,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Piano } from '../pages/piano/piano';
 import { AboutPage } from '../pages/about/about';
+import { ResultadosPage } from '../pages/resultados/resultados';
 //import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 export const firebaseConfig = {
@@ -29,6 +30,7 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     AboutPage,
+    ResultadosPage,
     Piano
   ],
   imports: [
@@ -42,6 +44,7 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     AboutPage,
+    ResultadosPage,
     Piano
   ],
   providers: [

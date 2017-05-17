@@ -13,14 +13,31 @@
 </ion-header>
 
 
-<ion-content padding>
-<button ion-button (click)="sonido(1);" color="secondary">1</button>
+<ion-content padding class="back">
 
-<button ion-button (click)="sonido(2);" color="danger">2</button>
-
-<button ion-button (click)="sonido(3);" color="light">3</button>
-
-<button ion-button (click)="sonido(4);" color="dark">4</button>
-<button ion-button (click)="grabar();" >GRABAR</button>
-<button ion-button (click)="ver();"  color="danger">Stop</button>
+  <ion-icon class="iconsize red" (click)="grabar();" name="mic"></ion-icon>
+  <ion-icon class="iconsize" name="square" (click)="ver();"></ion-icon>
+  <!--  col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 -->
+    <!--button (click)="showStyle = !showStyle;">Toggle style</button>
+    <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" ></div-->
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <div (click)="sonido(1);" [style.background-color]="getStyle()"><img id="" class="responsive" src="{{img[0]}}"/></div>
+      </ion-col>
+      <ion-col>
+        <div (click)="sonido(2);"><img id="" class="responsive" src="{{img[1]}}"/></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div (click)="sonido(3);"><img id="" class="responsive" src="{{img[2]}}"/></div>
+      </ion-col>
+      <ion-col>
+        <div (click)="sonido(4);"><img id="" class="responsive" src="{{img[3]}}"/></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
