@@ -11,11 +11,13 @@ import { NativeAudio } from '@ionic-native/native-audio';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Piano } from '../pages/piano/piano';
+import { AboutPage } from '../pages/about/about';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    AboutPage,
     Piano
   ],
   imports: [
@@ -26,6 +28,7 @@ import { Piano } from '../pages/piano/piano';
   entryComponents: [
     MyApp,
     HomePage,
+    AboutPage,
     Piano
   ],
   providers: [
