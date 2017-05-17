@@ -23,6 +23,7 @@ export class Piano {
   nombre: string;
   sonidos: FirebaseListObservable<any>;
   img: string[];
+  segundos:string;
   constructor(public fireDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
     this.nativeAudio.preloadSimple('platillo', 'assets/sound/platillo.mp3');
     this.nativeAudio.preloadSimple('tambor', 'assets/sound/tambor.mp3');
@@ -38,20 +39,21 @@ export class Piano {
     this.img[1] = 'assets/img/tecla1.jpg';
     this.img[2] = 'assets/img/tecla3.jpg';
     this.img[3] = 'assets/img/tecla4.jpg';
+    this.segundos='';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Piano');
 
   }
-    getStyle() {
+    /*getStyle() {
       console.info(this.showStyle)
     if(this.showStyle) {
       return "yellow";
     } else {
       return "";
     }
-  }
+    }*/
   sonido(x) {
     switch (x) {
       case 1:
@@ -85,9 +87,14 @@ export class Piano {
   }
 
   grabar() {
+    this.segundos='Grabando';
     this.puntos = 0;
     this.grab = true;
-    console.info(this.puntos);
+    /*for (var index = 0; index < 10; index++) {
+      this.sleep(1000);      
+      this.segundos++;
+    }    */
+    console.info(this.puntos);    
   }
 
   sleep(milliseconds) {
@@ -99,6 +106,7 @@ export class Piano {
     }
   }
   ver() {
+    this.segundos='';
     var d = new Date();
     var mes = d.getMonth() + 1;
     var dia = d.getDay();

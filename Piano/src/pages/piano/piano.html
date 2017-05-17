@@ -15,15 +15,15 @@
 
 <ion-content padding class="back">
 
-  <ion-icon class="iconsize red" (click)="grabar();" name="mic"></ion-icon>
+  <ion-icon id="mic" class="iconsize red" (click)="grabar();" name="mic"></ion-icon>{{segundos}}
   <ion-icon class="iconsize" name="square" (click)="ver();"></ion-icon>
   <!--  col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 -->
     <!--button (click)="showStyle = !showStyle;">Toggle style</button>
-    <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" ></div-->
+    <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" > [style.background-color]="getStyle()"</div-->
   <ion-grid>
     <ion-row>
       <ion-col >
-        <div (click)="sonido(1);" [style.background-color]="getStyle()"><img id="" class="responsive" src="{{img[0]}}"/></div>
+        <div (click)="sonido(1);" ><img id="" class="responsive" src="{{img[0]}}"/></div>
       </ion-col>
       <ion-col>
         <div (click)="sonido(2);"><img id="" class="responsive" src="{{img[1]}}"/></div>
