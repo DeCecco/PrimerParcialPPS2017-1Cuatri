@@ -19,9 +19,9 @@ export class Piano {
   puntos: number;
   record: number[];
   grab: boolean;
-  nombre: string; 
+  nombre: string;
   sonidos: FirebaseListObservable<any>;
-  constructor(public fireDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
+  constructor(public fireDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
     this.nativeAudio.preloadSimple('platillo', 'assets/sound/platillo.mp3');
     this.nativeAudio.preloadSimple('tambor', 'assets/sound/tambor.mp3');
     this.nativeAudio.preloadSimple('redoble', 'assets/sound/redoble.mp3');
@@ -34,7 +34,7 @@ export class Piano {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Piano');
-     
+
   }
 
   sonido(x) {
@@ -71,36 +71,48 @@ export class Piano {
     this.grab = true;
     console.info(this.puntos);
   }
+ 
+  sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds) {
+        break;
+      }
+    }
+  }
   ver() {
-      var d = new Date();
-      var mes = d.getMonth() + 1;
-      var dia = d.getDay();
-      var anio = d.getFullYear();
-      var fecha = dia + '/' + mes + '/' + anio;
-      
+    var d = new Date();
+    var mes = d.getMonth() + 1;
+    var dia = d.getDay();
+    var anio = d.getFullYear();
+    var fecha = dia + '/' + mes + '/' + anio;
+
     this.sonidos.push({
-            fecha:fecha,
-            nombre: this.nombre,
-            puntos:this.puntos,
-            record:this.record
-          });        
+      fecha: fecha,
+      nombre: this.nombre,
+      puntos: this.puntos,
+      record: this.record
+    });
+
     this.record.forEach(element => {
-        console.info(element)
-        switch (element) {
-          case 1:
-            this.nativeAudio.play('platillo');
-            break;
-          case 2:
-            this.nativeAudio.play('tambor');
-            break;
-          case 3:
-            this.nativeAudio.play('redoble');
-            break;
-          case 4:
-            this.nativeAudio.play('redoble2');
-            break;
-        }
-      
+      this.sleep(500);
+
+      console.info(element)
+      switch (element) {
+        case 1:
+          this.nativeAudio.play('platillo');
+          break;
+        case 2:
+          this.nativeAudio.play('tambor');
+          break;
+        case 3:
+          this.nativeAudio.play('redoble');
+          break;
+        case 4:
+          this.nativeAudio.play('redoble2');
+          break;
+      }
+
     });
   }
 
