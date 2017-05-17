@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from "rxjs";
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
 /**
  * Generated class for the Piano page.
  *
@@ -19,8 +20,8 @@ export class Piano {
   record: number[];
   grab: boolean;
   nombre: string; 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
+  sonidos: FirebaseListObservable<any>;
+  constructor(public fireDatabase: AngularFireDatabase,public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
     this.nativeAudio.preloadSimple('platillo', 'assets/sound/platillo.mp3');
     this.nativeAudio.preloadSimple('tambor', 'assets/sound/tambor.mp3');
     this.nativeAudio.preloadSimple('redoble', 'assets/sound/redoble.mp3');
@@ -28,10 +29,12 @@ export class Piano {
     this.puntos = 0;
     this.record = Array();
     this.nombre = this.navParams.get("nombre");
+    this.sonidos = this.fireDatabase.list('/sonidos');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Piano');
+     
   }
 
   sonido(x) {
@@ -69,21 +72,18 @@ export class Piano {
     console.info(this.puntos);
   }
   ver() {
-    Observable.create((observer) => {
-          let timeout = null;
-          
-            timeout = setTimeout(() => {
-              observer.next(null);
-              observer.complete();
-              return () => {
-                if (timeout) {
-                  clearTimeout(timeout);
-                  console.info('0da')
-                }
-              };
-            },1000);          
-        });
-        
+      var d = new Date();
+      var mes = d.getMonth() + 1;
+      var dia = d.getDay();
+      var anio = d.getFullYear();
+      var fecha = dia + '/' + mes + '/' + anio;
+      
+    this.sonidos.push({
+            fecha:fecha,
+            nombre: this.nombre,
+            puntos:this.puntos,
+            record:this.record
+          });        
     this.record.forEach(element => {
         console.info(element)
         switch (element) {
