@@ -19,11 +19,13 @@ export class Resultado {
   nombre: string;
   jugadas: FirebaseListObservable<any>;
   inicio:string;
+  select:number;
   result: string[];
   constructor(public fireDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
     this.jugadas = this.fireDatabase.list('/jugadas');
     this.inicio = this.navParams.get("inicio");    
     this.result=Array();
+    this.select=0;
   }
 
   ionViewDidLoad() {    
