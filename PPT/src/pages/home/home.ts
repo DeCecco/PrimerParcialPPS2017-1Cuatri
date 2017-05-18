@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';//STORAGE FOR IONIC
 
 import { Juego } from '../juego/juego';
 import { About } from '../about/about';
+import { HelpPage } from '../help/help';
 import { Resultado } from '../resultado/resultado';
 @Component({
   selector: 'page-home',
@@ -39,5 +40,8 @@ export class HomePage {
   }
   about(){
     this.navCtrl.push(About);          
+  }
+   ayuda(){
+    this.navCtrl.push(HelpPage);          
   }
 }

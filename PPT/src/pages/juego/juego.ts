@@ -5,7 +5,7 @@ import * as $ from 'jquery';
 import { ModalController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
-
+//import { Vibration } from '@ionic-native/vibration';
 import { Resultado } from '../resultado/resultado';
 /**
  * Generated class for the Juego page.
@@ -31,7 +31,7 @@ export class Juego {
   winner: FirebaseListObservable<any>;
   losser: FirebaseListObservable<any>;
 
-  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public modalCtrl: ModalController, public toastCtrl: ToastController, public fireDatabase: AngularFireDatabase) {
+  constructor(/*private vibration: Vibration,*/public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public modalCtrl: ModalController, public toastCtrl: ToastController, public fireDatabase: AngularFireDatabase) {
     this.foto = Array();
     this.resultado = Array();
     this.gano = Array();
@@ -103,6 +103,7 @@ export class Juego {
 
   }
   select(opcion) {
+    //this.vibration.vibrate(400);
     this.random();
 
 

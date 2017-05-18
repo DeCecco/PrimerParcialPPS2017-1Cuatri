@@ -10,17 +10,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="tutorial-page">
+<ion-content class="tutorial-page background-black">
 
   <ion-slides pager>
     <ion-slide *ngFor="let slide of slides">
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+     
+      <h2 class="slide-title textwhite" [innerHTML]="slide.title"></h2>
       <img [src]="slide.image" class="slide-image"/>      
-      <p [innerHTML]="slide.description"></p>
+      <p [innerHTML]="slide.description" class="textwhite"></p>
     </ion-slide>
     <ion-slide> 
       <img src="assets/img/icon.png" class="slide-image"/>
-      <h2 class="slide-title">¿Listo para empezar?</h2>
+      <h2 class="slide-title textwhite">¿Listo para empezar?</h2>
       <button (click)="jugar()" ion-button large clear icon-right color="primary">
         Jugar
         <ion-icon name="arrow-forward"></ion-icon>

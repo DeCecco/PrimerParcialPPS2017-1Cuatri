@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';//STORAGE FOR IONIC
 
 //import { Firebase } from '@ionic-native/firebase';
+//import { Vibration } from '@ionic-native/vibration';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -16,6 +17,7 @@ import { Juego } from '../pages/juego/juego';
 import { Resultado } from '../pages/resultado/resultado';
 import { About } from '../pages/about/about';
 import { ModalPage } from '../pages/modal/modal';
+import { HelpPage } from '../pages/help/help';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 export const firebaseConfig = {
@@ -39,6 +41,7 @@ const myFirebaseAuthConfig = {
     Juego,
     Resultado,
     About,
+    HelpPage,
     ModalPage
   ],
   imports: [
@@ -55,10 +58,12 @@ const myFirebaseAuthConfig = {
     HomePage,
     Juego,
     Resultado,
+    HelpPage,
     About,
     ModalPage
   ],
   providers: [
+   // Vibration,
     StatusBar,
     SplashScreen,
     //Firebase,

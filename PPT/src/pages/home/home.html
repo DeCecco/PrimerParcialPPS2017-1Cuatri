@@ -26,9 +26,10 @@
       <ion-item class="background-black">
         <ion-row>
           <ion-col class="center">
-            <p><button ion-button icon-left color="danger" (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Jugar</button></p>
-            <p><button ion-button icon-left color="dark" (click)="registros()"><ion-icon name="ios-paper-outline"></ion-icon>Historial</button></p>             
-            <p><button ion-button id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button></p>
+            <p><button ion-button class="btnsize" icon-left color="danger" (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Jugar</button></p>
+            <p><button ion-button class="btnsize" icon-left (click)="registros()"><ion-icon name="ios-paper-outline"></ion-icon>Historial</button></p>             
+            <p><button ion-button class="btnsize" icon-left (click)="ayuda()"><ion-icon name="ios-help" md="md-help"></ion-icon>Ayuda</button></p>             
+            <p><button ion-button class="btnsize" id="btnAbout" color="dark" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button></p>
           </ion-col>
         </ion-row>
       </ion-item>
