@@ -20,9 +20,10 @@
       <ion-item>
         <ion-row>
           <ion-col class="center">
-            <p><button ion-button icon-left color="secondary" (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Iniciar trivia</button></p>
-            <p><button ion-button icon-left color="dark" (click)="historial()"><ion-icon name="ios-paper-outline"></ion-icon>Historial</button></p>
-            <p><button ion-button id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button></p>
+            <p><button class="btnsize" ion-button icon-left color="secondary" (click)="iniciar()"><ion-icon name="ios-play"></ion-icon>Iniciar trivia</button></p>
+            <p><button class="btnsize" ion-button icon-left (click)="historial()"><ion-icon name="ios-paper-outline"></ion-icon>Historial</button></p>
+            <p><button class="btnsize" ion-button icon-left (click)="ayuda()"><ion-icon name="ios-help" md="md-help"></ion-icon>Ayuda</button></p>
+            <p><button class="btnsize" ion-button color="dark" id="btnAbout" icon-left (click)="about()"><ion-icon name="ios-person"></ion-icon>Sobre el autor</button></p>
           </ion-col>
         </ion-row>
       </ion-item>

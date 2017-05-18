@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { About } from '../pages/about/about';
 import { Preguntas } from '../pages/preguntas/preguntas';
 import { Resultado } from '../pages/resultado/resultado';
+import { HelpPage } from '../pages/help/help';
 
 
 //import { AuthServiceProvider } from '../providers/auth-service/auth-service';
@@ -35,6 +36,7 @@ export const firebaseConfig={
     HomePage,
     Preguntas,
     About,
+    HelpPage,
     Resultado
   ],
   imports: [
@@ -50,6 +52,7 @@ export const firebaseConfig={
     HomePage,
     Preguntas,
     About,
+    HelpPage,
     Resultado
   ],
   providers: [

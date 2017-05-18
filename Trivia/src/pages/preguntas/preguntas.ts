@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 /* si da error correr lo siguiente para actualizar el core
 npm uninstall --save @ionic-native/core
@@ -32,7 +32,7 @@ export class Preguntas {
   imagen:string;
   bandera:boolean;
   cantR:number=0;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration,private nativeAudio: NativeAudio) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private vibration: Vibration,private nativeAudio: NativeAudio) {
     this.pregunta='¿En que año se estrenó volver al futuro?';
     this.respuestas=[{value:'1983',correcto:false},{value:'1985',correcto:true},{value:'1990',correcto:false}];
     this.imagen='assets/img/delorean.jpg';    
@@ -40,7 +40,7 @@ export class Preguntas {
     this.FF= Array();     
    
     this.nativeAudio.preloadSimple('win', 'assets/sounds/win.mp3'); 
-    this.nativeAudio.preloadSimple('error', 'assets/sounds/error.mp3'); 
+    this.nativeAudio.preloadSimple('error', 'assets/sounds/denied.mp3'); 
     
   }
   
@@ -79,8 +79,9 @@ export class Preguntas {
       this.storage.ready().then(() => {
        // set a key/value
         this.storage.set('respuestas', this.FF);         
-             
-        this.navCtrl.push(Resultado, { inicio:'jugar'});
+        let profileModal = this.modalCtrl.create(Resultado, { inicio: 'jugar' });
+        profileModal.present();     
+        //this.navCtrl.push(Resultado, { inicio:'jugar'});
       });
     }
   };

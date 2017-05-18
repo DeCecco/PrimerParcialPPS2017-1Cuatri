@@ -5,11 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header *ngIf="inicio=='jugar'">
-
-  <ion-navbar>
-    <ion-title>Historial</ion-title>
+  <ion-navbar no-border-bottom>
+    <ion-title class="center">
+      Historial
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss(1)">
+        <span ion-text color="primary">Salir</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -24,14 +30,14 @@
       <p *ngIf="val.respuesta.correcto" class="resultOk">{{val.respuesta.value}}</p>
       <p *ngIf="!val.respuesta.correcto" class="resultError">{{val.respuesta.value}}</p>
     </ion-item>
-  </ion-card>
+  </ion-card>  
 </ion-content>
 
 <ion-header *ngIf="inicio=='home'">
   <ion-navbar no-border-bottom>
-    <ion-title>
+    <ion-title class="center">
       Seleccione una pregunta
-    </ion-title>
+    </ion-title>    
   </ion-navbar>
   <ion-toolbar no-border-top>
     <ion-segment [(ngModel)]="pet">
