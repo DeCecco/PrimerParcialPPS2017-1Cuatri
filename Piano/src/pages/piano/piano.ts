@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { Vibration } from '@ionic-native/vibration';
 import { NativeAudio } from '@ionic-native/native-audio';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database';
+import { ToastController } from 'ionic-angular';
 /**
  * Generated class for the Piano page.
  *
@@ -23,14 +24,15 @@ export class Piano {
   nombre: string;
   sonidos: FirebaseListObservable<any>;
   img: string[];
-  segundos:string;
-  constructor(public fireDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
+  active:boolean;
+  segundos: string;
+  constructor(public toastCtrl: ToastController,public fireDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private nativeAudio: NativeAudio) {
     this.nativeAudio.preloadSimple('platillo', 'assets/sound/platillo.mp3');
     this.nativeAudio.preloadSimple('tambor', 'assets/sound/tambor.mp3');
     this.nativeAudio.preloadSimple('redoble', 'assets/sound/redoble.mp3');
     this.nativeAudio.preloadSimple('redoble2', 'assets/sound/redoble2.mp3');
     this.puntos = 0;
-    this.showStyle= false;
+    this.showStyle = false;
     this.record = Array();
     this.nombre = this.navParams.get("nombre");
     this.sonidos = this.fireDatabase.list('/sonidos');
@@ -39,29 +41,30 @@ export class Piano {
     this.img[1] = 'assets/img/tecla1.jpg';
     this.img[2] = 'assets/img/tecla3.jpg';
     this.img[3] = 'assets/img/tecla4.jpg';
-    this.segundos='';
+    this.segundos = 'Grabar';
+    this.active=false;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Piano');
 
   }
-    /*getStyle() {
-      console.info(this.showStyle)
-    if(this.showStyle) {
-      return "yellow";
-    } else {
-      return "";
-    }
-    }*/
+  /*getStyle() {
+    console.info(this.showStyle)
+  if(this.showStyle) {
+    return "yellow";
+  } else {
+    return "";
+  }
+  }*/
   sonido(x) {
     switch (x) {
       case 1:
         this.nativeAudio.play('platillo');
         this.vibration.vibrate(50);
         this.puntos += 1;
-        
-        this.img[0]='assets/img/tecla00.jpg';
+
+        this.img[0] = 'assets/img/tecla00.jpg';
         if (this.grab) { this.record.push(x) }
         break;
       case 2:
@@ -87,14 +90,17 @@ export class Piano {
   }
 
   grabar() {
-    this.segundos='Grabando';
+    this.active=true;
+    console.info(this.active)
+    this.record = Array();
+    this.segundos = 'Grabando';
     this.puntos = 0;
     this.grab = true;
     /*for (var index = 0; index < 10; index++) {
       this.sleep(1000);      
       this.segundos++;
     }    */
-    console.info(this.puntos);    
+    console.info(this.puntos);
   }
 
   sleep(milliseconds) {
@@ -105,20 +111,43 @@ export class Piano {
       }
     }
   }
+  ok(){
+     let toast = this.toastCtrl.create({
+      message: 'Grabado correctamente',
+      position:'middle',
+      duration: 1000
+    });
+    toast.present();
+  }
+  no(){
+     let toast = this.toastCtrl.create({
+      message: 'No se grabaron sonidos',
+      position:'middle',
+      duration: 1000
+    });
+    toast.present();
+  }
   ver() {
-    this.segundos='';
+    this.active=false;
+    this.segundos = 'Grabar';
     var d = new Date();
     var mes = d.getMonth() + 1;
     var dia = d.getDay();
     var anio = d.getFullYear();
     var fecha = dia + '/' + mes + '/' + anio;
+    console.info(this.record)
 
-    this.sonidos.push({
-      fecha: fecha,
-      nombre: this.nombre,
-      puntos: this.puntos,
-      record: this.record
-    });
+    if (this.record.length > 0) {
+      this.sonidos.push({
+        fecha: fecha,
+        nombre: this.nombre,
+        puntos: this.puntos,
+        record: this.record
+      });
+      this.ok();
+    }else{
+      this.no();
+    }
   }
 
 }
