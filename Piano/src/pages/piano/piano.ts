@@ -37,10 +37,10 @@ export class Piano {
     this.nombre = this.navParams.get("nombre");
     this.sonidos = this.fireDatabase.list('/sonidos');
     this.img = Array();
-    this.img[0] = 'assets/img/tecla0.jpg';
-    this.img[1] = 'assets/img/tecla1.jpg';
-    this.img[2] = 'assets/img/tecla3.jpg';
-    this.img[3] = 'assets/img/tecla4.jpg';
+    this.img[0] = 'assets/img/platillo.png';
+    this.img[1] = 'assets/img/bombo.png';
+    this.img[2] = 'assets/img/redoblante.png';
+    this.img[3] = 'assets/img/tambor2.png';
     this.segundos = 'Grabar';
     this.active=false;
   }
@@ -64,7 +64,7 @@ export class Piano {
         this.vibration.vibrate(50);
         this.puntos += 1;
 
-        this.img[0] = 'assets/img/tecla00.jpg';
+        //this.img[0] = 'assets/img/tecla00.jpg';
         if (this.grab) { this.record.push(x) }
         break;
       case 2:

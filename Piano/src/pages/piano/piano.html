@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>piano</ion-title>
+    <ion-title>Piano</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 <ion-content padding class="back">
 
   <button (click)="grabar();" ion-button color="light" icon-left><ion-icon id="mic" class="iconsize red"  name="mic"></ion-icon>{{segundos}}</button>
-  <button *ngIf="active"  (click)="ver();" ion-button color="light" icon-left><ion-icon class="iconsize" name="square"></ion-icon>Stop</button>
+  <button *ngIf="active"  (click)="ver();" ion-button color="light" icon-left><ion-icon class="iconsize" name="square"></ion-icon>Stop</button>Puntos: {{puntos}}
   <!--  col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 -->
     <!--button (click)="showStyle = !showStyle;">Toggle style</button>
     <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" > [style.background-color]="getStyle()"</div-->
